@@ -1580,7 +1580,8 @@
             var target = this.target,
                 options = target && target.options;
 
-            if (target && !this.interacting()) {
+            if(target && target !== interactables.get(curEventTarget)) { return; }
+            else if (target && !this.interacting()) {
                 action = action || validateAction(forceAction || target.getAction(pointer, this, curEventTarget), target, this.element);
 
                 this.setEventXY(this.startCoords);
